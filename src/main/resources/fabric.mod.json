@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "id": "stopp2w",
+  "version": "${version}",
+  "name": "StopP2W",
+  "description": "",
+  "authors": [],
+  "contact": {
+    "repo": "https://github.com/Jannis/StopP2W-Mod"
+  },
+  "license": "All-Rights-Reserved",
+  "icon": "assets/stopp2w/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+      "net.shieldbreak.stopp2w.client.StopP2WClient"
+    ],
+    "main": [
+      "net.shieldbreak.stopp2w.StopP2W"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}
