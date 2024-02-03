@@ -1,0 +1,3 @@
+v1	named	intermediary
+FIELD	net/shieldbreak/stopp2w/mixins/MixinConnectScreen	Lnet/minecraft/client/gui/screen/Screen;	parent	field_2412
+FIELD	net/shieldbreak/stopp2w/mixins/MultiplayerScreenMixin	Lnet/minecraft/client/gui/screen/Screen;	parent	field_3049

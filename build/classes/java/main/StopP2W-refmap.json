@@ -1,0 +1,20 @@
+{
+  "mappings": {
+    "net/shieldbreak/stopp2w/mixins/MixinConnectScreen": {
+      "connect(Lnet/minecraft/client/MinecraftClient;Lnet/minecraft/client/network/ServerAddress;)V": "Lnet/minecraft/class_412;method_2130(Lnet/minecraft/class_310;Lnet/minecraft/class_639;)V"
+    },
+    "net/shieldbreak/stopp2w/mixins/MultiplayerScreenMixin": {
+      "init": "Lnet/minecraft/class_500;method_25426()V"
+    }
+  },
+  "data": {
+    "named:intermediary": {
+      "net/shieldbreak/stopp2w/mixins/MixinConnectScreen": {
+        "connect(Lnet/minecraft/client/MinecraftClient;Lnet/minecraft/client/network/ServerAddress;)V": "Lnet/minecraft/class_412;method_2130(Lnet/minecraft/class_310;Lnet/minecraft/class_639;)V"
+      },
+      "net/shieldbreak/stopp2w/mixins/MultiplayerScreenMixin": {
+        "init": "Lnet/minecraft/class_500;method_25426()V"
+      }
+    }
+  }
+}
