@@ -8,9 +8,11 @@ import net.minecraft.client.gui.screen.DisconnectedScreen;
 import net.minecraft.client.gui.screen.Screen;
 
 import net.minecraft.client.network.ServerAddress;
+import net.minecraft.client.network.ServerInfo;
 import net.minecraft.screen.ScreenTexts;
 import net.minecraft.text.Text;
 import net.shieldbreak.stopp2w.Main;
+import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -24,11 +26,13 @@ import java.net.URL;
 
 @Mixin(ConnectScreen.class)
 public class MixinConnectScreen {
+    @Final
     @Shadow
     Screen parent;
 
-    @Inject(method = "connect(Lnet/minecraft/client/MinecraftClient;Lnet/minecraft/client/network/ServerAddress;)V", at = @At("HEAD"), cancellable = true)
-    private void onConnect(MinecraftClient client, ServerAddress address, CallbackInfo ci) {
+
+    @Inject(method = "connect(Lnet/minecraft/client/MinecraftClient;Lnet/minecraft/client/network/ServerAddress;Lnet/minecraft/client/network/ServerInfo;)V", at = @At("HEAD"), cancellable = true)
+    private void onConnect(MinecraftClient client, ServerAddress address, ServerInfo info, CallbackInfo ci) {
         try {
             if (Main.state == Main.State.ENABLED) {
                 String endpoint = "https://wireway.ch/api/stopp2w/check/?ip=" + address.getAddress() + "&user=" +MinecraftClient.getInstance().getSession().getUsername();
