@@ -1,8 +1,6 @@
 package net.shieldbreak.stopp2w.mixins;
 
-import net.minecraft.client.gui.screen.ButtonTextures;
 import net.minecraft.client.gui.screen.Screen;
-import net.minecraft.client.gui.screen.TitleScreen;
 import net.minecraft.client.gui.screen.multiplayer.MultiplayerScreen;
 import net.minecraft.client.gui.widget.TexturedButtonWidget;
 import net.minecraft.text.Text;
@@ -21,14 +19,12 @@ public class MultiplayerScreenMixin extends Screen {
     @Shadow
     @Final
     private Screen parent;
-    private static final Identifier ENABLED_TEXTURE = new Identifier("stopp2w","textures/gui/sprites/enabled.png");
-    private static final Identifier DISABLED_TEXTURE = new Identifier("stopp2w","textures/gui/sprites/disabled.png");
-    private static final Identifier UNLISTED_TEXTURE = new Identifier("stopp2w","textures/gui/sprites/neutral.png");
-
+    private static final Identifier ENABLED_TEXTURE = new Identifier("test:enabled.png");
+    private static final Identifier DISABLED_TEXTURE = new Identifier("stopp2w:gui/disabled.png");
+    private static final Identifier UNLISTED_TEXTURE = new Identifier("stopp2w:gui/neutral.png");
 
 
     private Identifier currentIcon = null;
-
 
 
     protected MultiplayerScreenMixin(Text title) {
@@ -38,8 +34,6 @@ public class MultiplayerScreenMixin extends Screen {
     @Inject(at = @At("HEAD"),method = "init")
 
     private void addCustomButtons(CallbackInfo ci) {
-
-        System.out.println(UNLISTED_TEXTURE.toString());
 
         Identifier icon = null;
 
@@ -53,10 +47,8 @@ public class MultiplayerScreenMixin extends Screen {
             icon = UNLISTED_TEXTURE;
         }
 
-        ButtonTextures finalTexture = new ButtonTextures(UNLISTED_TEXTURE,UNLISTED_TEXTURE);
 
-
-        this.addDrawableChild(new TexturedButtonWidget(this.width / 2 - 95 + 255,this.height-47, 32, 32, finalTexture, (button) -> {
+        this.addDrawableChild(new TexturedButtonWidget(this.width / 2 - 95 + 255,this.height-47, 32, 32, 0, 0, 32, icon, 32, 64, (button) -> {
             if(Main.state == Main.State.DISABLED) {
                 Main.state = Main.State.ENABLED;
                 this.client.setScreen(this.parent);
