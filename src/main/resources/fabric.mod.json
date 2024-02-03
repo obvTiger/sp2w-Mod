@@ -2,26 +2,42 @@
   "schemaVersion": 1,
   "id": "stopp2w",
   "version": "${version}",
-  "name": "StopP2W",
-  "description": "",
-  "authors": [],
+
+  "name": "Stop P2W",
+  "description": "Stop Pay To Win is a mod that blocks servers that have been reported as pay to win or malicious",
+  "authors": [
+    "obvTiger"
+  ],
   "contact": {
-    "repo": "https://github.com/Jannis/StopP2W-Mod"
+    "homepage": "https://discord.gg/p2tqycDqHY",
+    "issues": "https://discord.gg/p2tqycDqHY",
+    "sources": "https://discord.gg/p2tqycDqHY"
   },
-  "license": "All-Rights-Reserved",
+
+  "license": "ARR",
   "icon": "assets/stopp2w/icon.png",
-  "environment": "*",
+
+  "environment": "client",
   "entrypoints": {
     "client": [
-      "net.shieldbreak.stopp2w.client.StopP2WClient"
-    ],
-    "main": [
-      "net.shieldbreak.stopp2w.StopP2W"
+      "net.shieldbreak.stopp2w.Main"
     ]
   },
+  "mixins": [
+    "stopp2w.mixins.json"
+  ],
+
   "depends": {
-    "fabricloader": ">=${loader_version}",
+    "fabricloader": "*",
     "fabric": "*",
-    "minecraft": "${minecraft_version}"
+    "minecraft": "1.17.1"
+  },
+
+  "custom": {
+    "modmenu": {
+      "links": {
+        "modmenu.discord": "https://discord.gg/p2tqycDqHY"
+      }
+    }
   }
 }
