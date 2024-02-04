@@ -6,13 +6,6 @@ import org.apache.logging.log4j.Logger;
 
 public class Main implements ClientModInitializer {
     private static Logger logger = LogManager.getLogger("Server Blacklist");
-    private static String blacklist;
-
-
-
-
-    public static Boolean enabled;
-
     public enum State {
         ENABLED,
         UNTESTED,
@@ -27,9 +20,6 @@ public class Main implements ClientModInitializer {
 
 
 
-    public static String blacklist() {
-        return blacklist;
-    }
 
     @Override
     public void onInitializeClient() {
