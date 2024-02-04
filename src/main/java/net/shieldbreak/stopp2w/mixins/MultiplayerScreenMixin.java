@@ -38,6 +38,7 @@ public class MultiplayerScreenMixin extends Screen {
 
     private void addCustomButtons(CallbackInfo ci) {
 
+
         ButtonTextures icon = null;
 
         if(Main.state == Main.State.DISABLED) {

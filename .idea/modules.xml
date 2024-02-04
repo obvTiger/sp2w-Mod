@@ -4,6 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/StopP2W-Mod.main.iml" filepath="$PROJECT_DIR$/.idea/modules/StopP2W-Mod.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/StopP2W-Mod.test.iml" filepath="$PROJECT_DIR$/.idea/modules/StopP2W-Mod.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/sp2w-Mod.main.iml" filepath="$PROJECT_DIR$/.idea/modules/sp2w-Mod.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/sp2w-Mod.test.iml" filepath="$PROJECT_DIR$/.idea/modules/sp2w-Mod.test.iml" />
     </modules>
   </component>
 </project>
