@@ -1,5 +1,6 @@
 package net.shieldbreak.stopp2w.mixins;
 
+import net.minecraft.client.gui.screen.ButtonTextures;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.multiplayer.MultiplayerScreen;
 import net.minecraft.client.gui.widget.TexturedButtonWidget;
@@ -13,18 +14,20 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+import java.awt.*;
+
 @Mixin(MultiplayerScreen.class)
 public class MultiplayerScreenMixin extends Screen {
 
     @Shadow
     @Final
     private Screen parent;
-    private static final Identifier ENABLED_TEXTURE = new Identifier("test:enabled.png");
-    private static final Identifier DISABLED_TEXTURE = new Identifier("stopp2w:gui/disabled.png");
-    private static final Identifier UNLISTED_TEXTURE = new Identifier("stopp2w:gui/neutral.png");
-
-
-    private Identifier currentIcon = null;
+    private static final Identifier ENABLED_TEXTURE = new Identifier("stopp2w","textures/gui/enabled.png");
+    private static final Identifier ENABLED_TEXTURE_FOCUSED = new Identifier("stopp2w","textures/gui/enabled_focused.png");
+    private static final Identifier DISABLED_TEXTURE = new Identifier("stopp2w","textures/gui/disabled.png");
+    private static final Identifier DISABLED_TEXTURE_FOCUSED = new Identifier("stopp2w","textures/gui/disabled_focused.png");
+    private static final Identifier UNLISTED_TEXTURE = new Identifier("stopp2w","textures/gui/neutral.png");
+    private static final Identifier UNLISTED_TEXTURE_FOCUSED = new Identifier("stopp2w","textures/gui/neutral_focused.png");
 
 
     protected MultiplayerScreenMixin(Text title) {
@@ -35,20 +38,19 @@ public class MultiplayerScreenMixin extends Screen {
 
     private void addCustomButtons(CallbackInfo ci) {
 
-        Identifier icon = null;
+        ButtonTextures icon = null;
 
         if(Main.state == Main.State.DISABLED) {
-            icon = DISABLED_TEXTURE;
+            icon = new ButtonTextures(DISABLED_TEXTURE,DISABLED_TEXTURE_FOCUSED);
         }
         if(Main.state == Main.State.ENABLED) {
-            icon = ENABLED_TEXTURE;
+            icon = new ButtonTextures(ENABLED_TEXTURE,ENABLED_TEXTURE_FOCUSED);
         }
         if(Main.state == Main.State.UNTESTED) {
-            icon = UNLISTED_TEXTURE;
+            icon = new ButtonTextures(UNLISTED_TEXTURE,UNLISTED_TEXTURE_FOCUSED);
         }
 
-
-        this.addDrawableChild(new TexturedButtonWidget(this.width / 2 - 95 + 255,this.height-47, 32, 32, 0, 0, 32, icon, 32, 64, (button) -> {
+        this.addDrawableChild(new TexturedButtonWidget(this.width / 2 - 95 + 255,this.height-47, 32, 32, icon, (button) -> {
             if(Main.state == Main.State.DISABLED) {
                 Main.state = Main.State.ENABLED;
                 this.client.setScreen(this.parent);
