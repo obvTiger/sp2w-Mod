@@ -53,7 +53,7 @@ public class MixinConnectScreen {
 
                 if (block) {
 
-                    Main.logger().info("Blocking server " + address.getAddress());
+                    Main.LOGGER.info("Blocking server " + address.getAddress());
                     client.setScreen(new DisconnectedScreen(this.parent, ScreenTexts.CONNECT_FAILED, Text.of("§c§lServer was blocked by StopP2W\n\n§7This Server is suspected to be Pay To Win.\nIf you think this is an error please send us a message on Discord: https://discord.gg/p2tqycDqHY\n\n§aServer: §7" + address.getAddress() + "\n §aReason: §7" + reason + "\n\n"+message)) {
                     });
                     ci.cancel();
@@ -78,8 +78,7 @@ public class MixinConnectScreen {
                 String message = json.get("message").getAsString();
 
                 if (block) {
-
-                    Main.logger().info("Blocking server " + address.getAddress());
+                    Main.LOGGER.info("Blocking server " + address.getAddress());
                     client.setScreen(new DisconnectedScreen(this.parent, ScreenTexts.CONNECT_FAILED, Text.of("§c§lServer was blocked by StopP2W\n\n§7This Server is suspected to be Pay To Win.\nIf you think this is an error please send us a message on Discord: https://discord.gg/p2tqycDqHY\n\n§aServer: §7" + address.getAddress() + "\n §aReason: §7" + reason + "\n\n"+message)) {
                     });
                     ci.cancel();
